@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<api xmlns="http://orange.com/soa/schemas/oadl/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="addressManagement" projectName="tmf" majorVersion="1" minorVersion="0" namespace="http://orange.com/api/addressManagement/tmf/v1" xsi:schemaLocation="http://orange.com/soa/schemas/oadl/v1 oadl.xsd">
+    <model location="model_business.xsd" namespace="http://orange.com/api/addressManagement/tmf/v1/model/business"/>
+    <resource class="Address">
+        <actions>
+            <find>
+                <doc lang="fr">This operation is used to retrieve an address corresponding to search criteria.</doc>
+                <param type="string" name=".fullText" header="false" required="false">
+                    <doc>can be used for full text searches, for example when you have a single textarea to capture address search infos</doc>
+                </param>
+                <param type="string" name=".fuzzy" header="false" required="false">
+                    <doc>can be used for approximative searches (sounds like, etc.)</doc>
+                </param>
+                <param type="string" name="fields" header="false" required="false">
+                    <doc>For attribute selection</doc>
+                </param>
+                <param type="string" name="streetNr" header="false" required="false">
+                    <doc>street number</doc>
+                </param>
+                <param type="string" name="streetNrSuffix" header="false" required="false">
+                    <doc>street number suffix</doc>
+                </param>
+                <param type="string" name="streetNrLast" header="false" required="false">
+                    <doc>street number last</doc>
+                </param>
+                <param type="string" name="streetNrLastSuffix" header="false" required="false">
+                    <doc>street number last suffix</doc>
+                </param>
+                <param type="string" name="streetName" header="false" required="false">
+                    <doc>street name</doc>
+                </param>
+                <param type="string" name="streetType" header="false" required="false">
+                    <doc>street Type : alley, avenue, boulevard, brae, crescent, drive, highway, lane, terrace, parade, place, tarn, way, wharf, ...</doc>
+                </param>
+                <param type="string" name="streetSuffix" header="false" required="false">
+                    <doc>street suffix</doc>
+                </param>
+                <param type="string" name="postcode" header="false" required="false">
+                    <doc>postal code</doc>
+                </param>
+                <param type="string" name="locality" header="false" required="false">
+                    <doc>locality</doc>
+                </param>
+                <param type="string" name="city" header="false" required="false">
+                    <doc>city</doc>
+                </param>
+                <param type="string" name="country" header="false" required="false">
+                    <doc>country</doc>
+                </param>
+                <param type="string" name="geoCode.latitude" header="false" required="false">
+                    <doc>latitude</doc>
+                </param>
+                <param type="string" name="geoCode.longitude" header="false" required="false">
+                    <doc>longitude</doc>
+                </param>
+                <param type="string" name="geoCode.geographicDatum" header="false" required="false">
+                    <doc>geographic system</doc>
+                </param>
+            </find>
+            <get>
+                <doc lang="fr">Retrieves an address using its unique ID. This ID should be retrieve either using the address completion process (cf. completion), or in another API of the ecosystem (party, appointment, etc.)</doc>
+            </get>
+            <custom name="Validate" enable="true">
+                <param type="Address" name="addressToValidate" header="false" required="false">
+                    <doc>Address data to validate</doc>
+                </param>
+            </custom>
+        </actions>
+        <resource class="SubAddress">
+            <actions>
+                <find>
+                    <doc lang="fr">This operation can be used to retrieve sub-addresses of an address.</doc>
+                </find>
+                <get>
+                    <doc lang="fr">To retrieve a given subAddress</doc>
+                </get>
+            </actions>
+        </resource>
+    </resource>
+    <resource class="Area">
+        <actions>
+            <find>
+                <doc lang="fr">This operation is the first step of an address completion process, allowing to retrieve geographic areas
+Step 1: I look for a geographic area (city, locality, district, etc.) using its name</doc>
+                <param type="string" name="fields" header="false" required="false">
+                    <doc>Attribute selection</doc>
+                </param>
+                <param type="string" name=".fuzzy" header="false" required="false">
+                    <doc>can be used for approximative searches (sounds like, etc.)</doc>
+                </param>
+                <param type="string" name="name" header="false" required="false">
+                    <doc>area name</doc>
+                </param>
+                <param type="string" name="type" header="false" required="false">
+                    <doc>area type</doc>
+                </param>
+            </find>
+        </actions>
+    </resource>
+    <resource class="Street">
+        <actions>
+            <find>
+                <doc lang="fr">This operation is the second step of an address completion process, allowing to retrieve streets
+Step 2: I look for the streets inside this geographic area</doc>
+                <param type="string" name="area.id" header="false" required="false">
+                    <doc>area id</doc>
+                </param>
+                <param type="string" name=".fuzzy" header="false" required="false">
+                    <doc>can be used for approximative searches (sounds like, etc.)</doc>
+                </param>
+                <param type="string" name="fields" header="false" required="false">
+                    <doc>attribute selection</doc>
+                </param>
+                <param type="string" name="name" header="false" required="false">
+                    <doc>street name</doc>
+                </param>
+                <param type="string" name="type" header="false" required="false">
+                    <doc>street type</doc>
+                </param>
+            </find>
+        </actions>
+        <resource class="StreetSegment">
+            <actions>
+                <find>
+                    <doc lang="fr">This operation is the last step of an address completion process, allowing to retrieve numbers in a street
+Step 3: I get all the street segments (numbers) existing in the street</doc>
+                </find>
+            </actions>
+        </resource>
+    </resource>
+</api>
