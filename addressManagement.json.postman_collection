@@ -1,0 +1,230 @@
+{
+	"id": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+	"name": "addressManagement",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "52521710-4404-e7f2-13a8-4b54dc4f77ef",
+			"name": "Area",
+			"description": "",
+			"order": [
+				"44c36860-3f8c-0526-8f1e-8dcdbd94089d"
+			],
+			"owner": "48360"
+		},
+		{
+			"id": "f7fcfbec-2d90-79ce-55c2-6e783b61858e",
+			"name": "Street",
+			"description": "",
+			"order": [
+				"4fd84b23-4386-d4b9-fbec-23bbad198f6f"
+			],
+			"owner": "48360",
+			"collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+		},
+		{
+			"id": "0d5cb919-1532-198e-16b7-6377b76c8fa7",
+			"name": "StreetSegment",
+			"description": "",
+			"order": [
+				"8d7f181a-7f4e-e546-6d04-aa710a3607fc"
+			],
+			"owner": "48360",
+			"collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+		},
+		{
+			"id": "f26baf98-f42f-bfc4-4959-af310d043b5d",
+			"name": "address",
+			"description": "",
+			"order": [
+				"ed55826e-2fda-bbf8-0e4f-895876558f80",
+				"6ca79777-8362-205d-32df-28854b94ba60",
+				"964eb8bb-05c3-7765-41e0-372a9f4861a9"
+			],
+			"owner": "48360",
+			"collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+		},
+		{
+			"id": "0621ab29-3b3e-d437-ba5b-14a610dc6d1e",
+			"name": "subscriber",
+			"description": "",
+			"order": [
+				"0359f620-230e-6eee-13f4-5a6272b2eca5",
+				"007e49c1-7944-e354-90a3-42257b597e2a"
+			],
+			"owner": "48360"
+		}
+	],
+	"timestamp": 1450963006602,
+	"owner": "48360",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "007e49c1-7944-e354-90a3-42257b597e2a",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementSubscriberApi}}/history",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452259920087,
+			"name": "/history",
+			"description": "get last event",
+			"collectionId": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+			"responses": [],
+			"folder": "0621ab29-3b3e-d437-ba5b-14a610dc6d1e"
+		},
+		{
+			"id": "0359f620-230e-6eee-13f4-5a6272b2eca5",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementSubscriberApi}}/current",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452259908174,
+			"name": "/current",
+			"description": "get last event",
+			"collectionId": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+			"responses": [],
+			"folder": "0621ab29-3b3e-d437-ba5b-14a610dc6d1e"
+		},
+		{
+			"id": "44c36860-3f8c-0526-8f1e-8dcdbd94089d",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/area",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452703587463,
+			"name": "find area",
+			"description": "find area",
+			"collectionId": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+			"responses": [],
+			"folder": "52521710-4404-e7f2-13a8-4b54dc4f77ef"
+		},
+		{
+			"id": "4fd84b23-4386-d4b9-fbec-23bbad198f6f",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/street?area.id=area3&fields=id,type,name",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452695303392,
+			"name": "find street",
+			"description": "find street",
+			"collectionId": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+			"responses": [],
+			"folder": "f7fcfbec-2d90-79ce-55c2-6e783b61858e"
+		},
+		{
+			"id": "6ca79777-8362-205d-32df-28854b94ba60",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/address/:addressId",
+			"preRequestScript": "",
+			"pathVariables": {
+				"addressId": "address1"
+			},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452697975003,
+			"name": "get address by id",
+			"description": "",
+			"collectionId": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+			"responses": [],
+			"folder": "f26baf98-f42f-bfc4-4959-af310d043b5d"
+		},
+		{
+			"id": "8d7f181a-7f4e-e546-6d04-aa710a3607fc",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/street/:streetId/streetSegment",
+			"preRequestScript": "",
+			"pathVariables": {
+				"streetId": "street3"
+			},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452694438630,
+			"name": "get streetSegment with streetId",
+			"description": "get streetSegment",
+			"collectionId": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+			"responses": [],
+			"folder": "0d5cb919-1532-198e-16b7-6377b76c8fa7"
+		},
+		{
+			"id": "964eb8bb-05c3-7765-41e0-372a9f4861a9",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/address/validate",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452698060322,
+			"name": "validate address",
+			"description": "",
+			"collectionId": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+			"responses": [],
+			"rawModeData": " {\n    \"id\": \"address1\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/address/address1\",\n    \"streetNr\": \"225\",\n    \"streetNrSuffix\": \"B\",\n    \"streetNrLast\": \"\",\n    \"streetNrLastSuffix\": \"\",\n    \"streetName\": \"Strathmore\",\n    \"streetType\": \"Terrace\",\n    \"streetSuffix\": \"\",\n    \"postcode\": \"5004\",\n    \"locality\": \"Brighton\",\n    \"city\": \"Brighton\",\n    \"stateOrProvince\": \"SA\",\n    \"country\": \"Australia\",\n    \"geoCode\": {\n    \"latitude\": \"1.430937\",\n    \"longitude\": \"43.597208\",\n    \"geographicDatum\": \"WGS84\"\n    },\n\"subAddress\": [\n    {\n    \"id\": \"subAddress11\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress11\"\n    },\n    {\n    \"id\": \"subAddress12\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress12\"\n    },\n    {\n    \"id\": \"subAddress13\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress13\"\n    }\n    ]\n}",
+			"folder": "f26baf98-f42f-bfc4-4959-af310d043b5d"
+		},
+		{
+			"id": "ed55826e-2fda-bbf8-0e4f-895876558f80",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/address",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452259646719,
+			"name": "find address",
+			"description": "",
+			"collectionId": "6a4153b4-c0d4-f3aa-af2d-1efd19b5f939",
+			"responses": [],
+			"folder": "f26baf98-f42f-bfc4-4959-af310d043b5d"
+		}
+	]
+}
