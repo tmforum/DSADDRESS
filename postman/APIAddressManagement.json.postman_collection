@@ -1,0 +1,158 @@
+{
+	"id": "d477673c-8e34-9dde-c2bd-c9bf10e2f03f",
+	"name": "API AddressManagement",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "cde8c245-3f4c-7de3-17e7-9f82a02d582a",
+			"name": "address",
+			"description": "Folder for address",
+			"order": [
+				"50f3d9eb-ce0b-6b6b-b84b-70f9ae41b1d0",
+				"7ae19f43-7aca-594c-1211-f3e2ece22d39",
+				"59766fc6-3387-b638-e16a-0c0a242b5e2d"
+			],
+			"owner": 0
+		},
+		{
+			"id": "3efee5b2-fd0d-1bcb-d228-3113c33b913d",
+			"name": "area",
+			"description": "Folder for area",
+			"order": [
+				"9706bdf9-da99-dbeb-1236-68fcb6b64e9e"
+			],
+			"owner": 0
+		},
+		{
+			"id": "e6f115b7-2929-fc2a-f1e9-8bf5fb7d0bb2",
+			"name": "street",
+			"description": "Folder for street",
+			"order": [
+				"dc046527-01c3-5bd2-3e3e-e2a6d0241851",
+				"a075eca3-c91c-799c-9047-aabb154944a1"
+			],
+			"owner": 0
+		}
+	],
+	"timestamp": 1413302258635,
+	"owner": 0,
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "50f3d9eb-ce0b-6b6b-b84b-70f9ae41b1d0",
+			"headers": "",
+			"url": "http://api.orange.com/address?.fullText={{.fullText}}&.fuzzy={{.fuzzy}}&fields={{fields}}&streetNr={{streetNr}}&streetNrSuffix={{streetNrSuffix}}&streetNrLast={{streetNrLast}}&streetNrLastSuffix={{streetNrLastSuffix}}&streetName={{streetName}}&streetType={{streetType}}&streetSuffix={{streetSuffix}}&postcode={{postcode}}&locality={{locality}}&city={{city}}&country={{country}}&geoCode.latitude={{geoCode.latitude}}&geoCode.longitude={{geoCode.longitude}}&geoCode.geographicDatum={{geoCode.geographicDatum}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470723061645,
+			"name": "find",
+			"description": "This operation is used to retrieve an address corresponding to search criteria.",
+			"collectionId": "d477673c-8e34-9dde-c2bd-c9bf10e2f03f",
+			"responses": []
+		},
+		{
+			"id": "59766fc6-3387-b638-e16a-0c0a242b5e2d",
+			"headers": "",
+			"url": "http://api.orange.com/address/validate",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470723054175,
+			"name": "validate",
+			"description": "",
+			"collectionId": "d477673c-8e34-9dde-c2bd-c9bf10e2f03f",
+			"responses": [],
+			"rawModeData": "Address data to validate"
+		},
+		{
+			"id": "7ae19f43-7aca-594c-1211-f3e2ece22d39",
+			"headers": "",
+			"url": "http://api.orange.com/address/{{addressId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470723057057,
+			"name": "findById",
+			"description": "Retrieves an address using its unique ID. This ID should be retrieve either using the address completion process (cf. completion), or in another API of the ecosystem (party, appointment, etc.)",
+			"collectionId": "d477673c-8e34-9dde-c2bd-c9bf10e2f03f",
+			"responses": []
+		},
+		{
+			"id": "9706bdf9-da99-dbeb-1236-68fcb6b64e9e",
+			"headers": "",
+			"url": "http://api.orange.com/area?fields={{fields}}&.fuzzy={{.fuzzy}}&name={{name}}&type={{type}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470723050392,
+			"name": "find",
+			"description": "This operation is the first step of an address completion process, allowing to retrieve geographic areas\nStep 1: I look for a geographic area (city, locality, district, etc.) using its name",
+			"collectionId": "d477673c-8e34-9dde-c2bd-c9bf10e2f03f",
+			"responses": []
+		},
+		{
+			"id": "a075eca3-c91c-799c-9047-aabb154944a1",
+			"headers": "",
+			"url": "http://api.orange.com/street/{{streetId}}/streetSegment",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470723077753,
+			"name": "find",
+			"description": "This operation is the last step of an address completion process, allowing to retrieve numbers in a street\nStep 3: I get all the street segments (numbers) existing in the street",
+			"collectionId": "d477673c-8e34-9dde-c2bd-c9bf10e2f03f",
+			"responses": []
+		},
+		{
+			"id": "dc046527-01c3-5bd2-3e3e-e2a6d0241851",
+			"headers": "",
+			"url": "http://api.orange.com/street?area.id={{area.id}}&.fuzzy={{.fuzzy}}&fields={{fields}}&name={{name}}&type={{type}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470723046677,
+			"name": "find",
+			"description": "This operation is the second step of an address completion process, allowing to retrieve streets\nStep 2: I look for the streets inside this geographic area",
+			"collectionId": "d477673c-8e34-9dde-c2bd-c9bf10e2f03f",
+			"responses": []
+		}
+	]
+}

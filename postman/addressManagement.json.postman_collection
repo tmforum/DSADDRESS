@@ -1,0 +1,224 @@
+{
+	"id": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+	"name": "addressManagement",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "003dbe4d-7084-8348-f2e2-01640fdb87d4",
+			"name": "Area",
+			"description": "",
+			"order": [
+				"036d425e-1085-7c97-13ca-7d25d3512267"
+			],
+			"owner": 0
+		},
+		{
+			"id": "46f3eb6c-20de-c8f8-a671-3885ce829b4e",
+			"name": "Street",
+			"description": "",
+			"order": [
+				"ef28b019-8dc8-8ff6-576a-d8852faa0954"
+			],
+			"owner": 0,
+			"collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+		},
+		{
+			"id": "4b3b8d60-4a54-543d-5021-e99ea9d09cfb",
+			"name": "StreetSegment",
+			"description": "",
+			"order": [
+				"a34d61a1-383b-0fdc-12e5-eff4f675b9d6"
+			],
+			"owner": 0,
+			"collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+		},
+		{
+			"id": "527c3fa0-27f1-0a37-2579-3d817d1eb6d0",
+			"name": "address",
+			"description": "",
+			"order": [
+				"7e3e73a3-e981-36cb-1f9f-22d13815380b",
+				"d17a5470-4411-4e3d-681c-19013e77ec58",
+				"2e653672-c36b-0280-fd46-c3517113afb7"
+			],
+			"owner": 0,
+			"collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+		},
+		{
+			"id": "2fa16229-e591-379c-1fec-6e5dccee8b10",
+			"name": "subscriber",
+			"description": "",
+			"order": [
+				"e5d96f37-5e13-9c9f-29a7-b354ebd03a1e",
+				"34d6255d-2758-8253-9b9b-7de111f436a2"
+			],
+			"owner": 0
+		}
+	],
+	"timestamp": 1450963006602,
+	"owner": 0,
+	"public": false,
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "036d425e-1085-7c97-13ca-7d25d3512267",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/area",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var area = dataOut[i];\n    tests[\"Response contains ID \" + area.id.toString()] = area.id.toString() !== \"\";\n    tests[\"Response contains NAME \" + area.name.toString()] = area.name.toString() !== \"\";\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470722440170,
+			"name": "find area",
+			"description": "find area",
+			"collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+			"responses": []
+		},
+		{
+			"id": "2e653672-c36b-0280-fd46-c3517113afb7",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/address/validate",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 201\"] = responseCode.code === 201;\n\ntests[\"Response contains ID \" + dataOut.id.toString()] = dataOut.id.toString() !== \"\";\ntests[\"Response contains HREF \" + dataOut.href.toString()] = dataOut.href.toString() !== \"\";",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470722775295,
+			"name": "validate address",
+			"description": "",
+			"collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+			"responses": [],
+			"rawModeData": " {\n    \"id\": \"address1\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/address/address1\",\n    \"streetNr\": \"225\",\n    \"streetNrSuffix\": \"B\",\n    \"streetNrLast\": \"\",\n    \"streetNrLastSuffix\": \"\",\n    \"streetName\": \"Strathmore\",\n    \"streetType\": \"Terrace\",\n    \"streetSuffix\": \"\",\n    \"postcode\": \"5004\",\n    \"locality\": \"Brighton\",\n    \"city\": \"Brighton\",\n    \"stateOrProvince\": \"SA\",\n    \"country\": \"Australia\",\n    \"geoCode\": {\n    \"latitude\": \"1.430937\",\n    \"longitude\": \"43.597208\",\n    \"geographicDatum\": \"WGS84\"\n    },\n\"subAddress\": [\n    {\n    \"id\": \"subAddress11\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress11\"\n    },\n    {\n    \"id\": \"subAddress12\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress12\"\n    },\n    {\n    \"id\": \"subAddress13\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress13\"\n    }\n    ]\n}"
+		},
+		{
+			"id": "34d6255d-2758-8253-9b9b-7de111f436a2",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementSubscriberApi}}/history",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452259920087,
+			"name": "/history",
+			"description": "get last event",
+			"collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+			"responses": [],
+			"folder": "2fa16229-e591-379c-1fec-6e5dccee8b10"
+		},
+		{
+			"id": "7e3e73a3-e981-36cb-1f9f-22d13815380b",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/address",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var address = dataOut[i];\n    tests[\"Response contains ID \" + address.id.toString()] = address.id.toString() !== \"\";\n    tests[\"Response contains HREF \" + address.href.toString()] = address.href.toString() !== \"\";\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470722663084,
+			"name": "find address",
+			"description": "",
+			"collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+			"responses": []
+		},
+		{
+			"id": "a34d61a1-383b-0fdc-12e5-eff4f675b9d6",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/street/:streetId/streetSegment",
+			"preRequestScript": "",
+			"pathVariables": {
+				"streetId": "street3"
+			},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var streetsegment = dataOut[i];\n    tests[\"Response contains ID \" + streetsegment.id.toString()] = streetsegment.id.toString() !== \"\";\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470722648532,
+			"name": "get streetSegment with streetId",
+			"description": "get streetSegment",
+			"collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+			"responses": []
+		},
+		{
+			"id": "d17a5470-4411-4e3d-681c-19013e77ec58",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/address/:addressId",
+			"preRequestScript": "",
+			"pathVariables": {
+				"addressId": "address1"
+			},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var address = dataOut[i];\n    tests[\"Response contains ID \" + address.id.toString()] = address.id.toString() !== \"\";\n    tests[\"Response contains HREF \" + address.href.toString()] = address.href.toString() !== \"\";\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470722669600,
+			"name": "get address by id",
+			"description": "",
+			"collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+			"responses": []
+		},
+		{
+			"id": "e5d96f37-5e13-9c9f-29a7-b354ebd03a1e",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementSubscriberApi}}/current",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452259908174,
+			"name": "/current",
+			"description": "get last event",
+			"collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+			"responses": [],
+			"folder": "2fa16229-e591-379c-1fec-6e5dccee8b10"
+		},
+		{
+			"id": "ef28b019-8dc8-8ff6-576a-d8852faa0954",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"url": "{{addressManagementApi}}/street?area.id=area3&fields=id,type,name",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var street = dataOut[i];\n    tests[\"Response contains ID \" + street.id.toString()] = street.id.toString() !== \"\";\n    tests[\"Response contains NAME \" + street.name.toString()] = street.name.toString() !== \"\";\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470722510870,
+			"name": "find street",
+			"description": "find street",
+			"collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+			"responses": []
+		}
+	]
+}
