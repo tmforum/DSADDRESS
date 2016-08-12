@@ -1,0 +1,906 @@
+{
+    "id": "",
+    "name": "Default",
+    "timestamp": 1470725065712,
+    "collection_id": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+    "folder_id": 0,
+    "target_type": "collection",
+    "environment_id": "e9ff5be6-a134-95a0-3719-abe85cd8241b",
+    "count": 1,
+    "collection": {
+        "id": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+        "name": "addressManagement",
+        "description": "",
+        "order": [],
+        "folders": [
+            {
+                "id": "003dbe4d-7084-8348-f2e2-01640fdb87d4",
+                "name": "Area",
+                "description": "",
+                "order": [
+                    "036d425e-1085-7c97-13ca-7d25d3512267"
+                ],
+                "owner": 0
+            },
+            {
+                "id": "46f3eb6c-20de-c8f8-a671-3885ce829b4e",
+                "name": "Street",
+                "description": "",
+                "order": [
+                    "ef28b019-8dc8-8ff6-576a-d8852faa0954"
+                ],
+                "owner": 0,
+                "collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+            },
+            {
+                "id": "4b3b8d60-4a54-543d-5021-e99ea9d09cfb",
+                "name": "StreetSegment",
+                "description": "",
+                "order": [
+                    "a34d61a1-383b-0fdc-12e5-eff4f675b9d6"
+                ],
+                "owner": 0,
+                "collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+            },
+            {
+                "id": "527c3fa0-27f1-0a37-2579-3d817d1eb6d0",
+                "name": "address",
+                "description": "",
+                "order": [
+                    "7e3e73a3-e981-36cb-1f9f-22d13815380b",
+                    "d17a5470-4411-4e3d-681c-19013e77ec58",
+                    "2e653672-c36b-0280-fd46-c3517113afb7"
+                ],
+                "owner": 0,
+                "collectionId": "2f2a96a3-55e9-5649-089d-e68c31729a7a"
+            },
+            {
+                "id": "2fa16229-e591-379c-1fec-6e5dccee8b10",
+                "name": "subscriber",
+                "description": "",
+                "order": [
+                    "e5d96f37-5e13-9c9f-29a7-b354ebd03a1e",
+                    "34d6255d-2758-8253-9b9b-7de111f436a2"
+                ],
+                "owner": 0
+            }
+        ],
+        "timestamp": 1450963006602,
+        "owner": 0,
+        "public": false,
+        "hasRequests": true,
+        "requests": [
+            {
+                "id": "036d425e-1085-7c97-13ca-7d25d3512267",
+                "headers": "Content-Type: application/json\nAccept: application/json\n",
+                "url": "{{addressManagementApi}}/area",
+                "preRequestScript": "",
+                "pathVariables": {},
+                "method": "GET",
+                "data": [],
+                "dataMode": "params",
+                "version": 2,
+                "tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var area = dataOut[i];\n    tests[\"Response contains ID \" + area.id.toString()] = area.id.toString() !== \"\";\n    tests[\"Response contains NAME \" + area.name.toString()] = area.name.toString() !== \"\";\n}",
+                "currentHelper": "normal",
+                "helperAttributes": {},
+                "time": 1470722440170,
+                "name": "find area",
+                "description": "find area",
+                "collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+                "responses": []
+            },
+            {
+                "id": "2e653672-c36b-0280-fd46-c3517113afb7",
+                "headers": "Content-Type: application/json\nAccept: application/json\n",
+                "url": "{{addressManagementApi}}/address/validate",
+                "preRequestScript": "",
+                "pathVariables": {},
+                "method": "POST",
+                "data": [],
+                "dataMode": "raw",
+                "version": 2,
+                "tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 201\"] = responseCode.code === 201;\n\ntests[\"Response contains ID \" + dataOut.id.toString()] = dataOut.id.toString() !== \"\";\ntests[\"Response contains HREF \" + dataOut.href.toString()] = dataOut.href.toString() !== \"\";",
+                "currentHelper": "normal",
+                "helperAttributes": {},
+                "time": 1470722775295,
+                "name": "validate address",
+                "description": "",
+                "collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+                "responses": [],
+                "rawModeData": " {\n    \"id\": \"address1\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/address/address1\",\n    \"streetNr\": \"225\",\n    \"streetNrSuffix\": \"B\",\n    \"streetNrLast\": \"\",\n    \"streetNrLastSuffix\": \"\",\n    \"streetName\": \"Strathmore\",\n    \"streetType\": \"Terrace\",\n    \"streetSuffix\": \"\",\n    \"postcode\": \"5004\",\n    \"locality\": \"Brighton\",\n    \"city\": \"Brighton\",\n    \"stateOrProvince\": \"SA\",\n    \"country\": \"Australia\",\n    \"geoCode\": {\n    \"latitude\": \"1.430937\",\n    \"longitude\": \"43.597208\",\n    \"geographicDatum\": \"WGS84\"\n    },\n\"subAddress\": [\n    {\n    \"id\": \"subAddress11\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress11\"\n    },\n    {\n    \"id\": \"subAddress12\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress12\"\n    },\n    {\n    \"id\": \"subAddress13\",\n    \"type\": \"Unit\",\n    \"href\": \"http://localhost:8080/DSAddressManagement/api/addressManagement/v1/subAddress/subAddress13\"\n    }\n    ]\n}"
+            },
+            {
+                "id": "34d6255d-2758-8253-9b9b-7de111f436a2",
+                "headers": "Content-Type: application/json\nAccept: application/json\n",
+                "url": "{{addressManagementSubscriberApi}}/history",
+                "preRequestScript": "",
+                "pathVariables": {},
+                "method": "GET",
+                "data": [],
+                "dataMode": "params",
+                "version": 2,
+                "tests": "",
+                "currentHelper": "normal",
+                "helperAttributes": {},
+                "time": 1452259920087,
+                "name": "/history",
+                "description": "get last event",
+                "collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+                "responses": [],
+                "folder": "2fa16229-e591-379c-1fec-6e5dccee8b10"
+            },
+            {
+                "id": "7e3e73a3-e981-36cb-1f9f-22d13815380b",
+                "headers": "Content-Type: application/json\nAccept: application/json\n",
+                "url": "{{addressManagementApi}}/address",
+                "preRequestScript": "",
+                "pathVariables": {},
+                "method": "GET",
+                "data": [],
+                "dataMode": "params",
+                "version": 2,
+                "tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var address = dataOut[i];\n    tests[\"Response contains ID \" + address.id.toString()] = address.id.toString() !== \"\";\n    tests[\"Response contains HREF \" + address.href.toString()] = address.href.toString() !== \"\";\n}",
+                "currentHelper": "normal",
+                "helperAttributes": {},
+                "time": 1470722663084,
+                "name": "find address",
+                "description": "",
+                "collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+                "responses": []
+            },
+            {
+                "id": "a34d61a1-383b-0fdc-12e5-eff4f675b9d6",
+                "headers": "Content-Type: application/json\nAccept: application/json\n",
+                "url": "{{addressManagementApi}}/street/:streetId/streetSegment",
+                "preRequestScript": "",
+                "pathVariables": {
+                    "streetId": "street3"
+                },
+                "method": "GET",
+                "data": [],
+                "dataMode": "params",
+                "version": 2,
+                "tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var streetsegment = dataOut[i];\n    tests[\"Response contains ID \" + streetsegment.id.toString()] = streetsegment.id.toString() !== \"\";\n}",
+                "currentHelper": "normal",
+                "helperAttributes": {},
+                "time": 1470722648532,
+                "name": "get streetSegment with streetId",
+                "description": "get streetSegment",
+                "collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+                "responses": []
+            },
+            {
+                "id": "d17a5470-4411-4e3d-681c-19013e77ec58",
+                "headers": "Content-Type: application/json\nAccept: application/json\n",
+                "url": "{{addressManagementApi}}/address/:addressId",
+                "preRequestScript": "",
+                "pathVariables": {
+                    "addressId": "address1"
+                },
+                "method": "GET",
+                "data": [],
+                "dataMode": "params",
+                "version": 2,
+                "tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var address = dataOut[i];\n    tests[\"Response contains ID \" + address.id.toString()] = address.id.toString() !== \"\";\n    tests[\"Response contains HREF \" + address.href.toString()] = address.href.toString() !== \"\";\n}",
+                "currentHelper": "normal",
+                "helperAttributes": {},
+                "time": 1470722669600,
+                "name": "get address by id",
+                "description": "",
+                "collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+                "responses": []
+            },
+            {
+                "id": "e5d96f37-5e13-9c9f-29a7-b354ebd03a1e",
+                "headers": "Content-Type: application/json\nAccept: application/json\n",
+                "url": "{{addressManagementSubscriberApi}}/current",
+                "preRequestScript": "",
+                "pathVariables": {},
+                "method": "GET",
+                "data": [],
+                "dataMode": "params",
+                "version": 2,
+                "tests": "",
+                "currentHelper": "normal",
+                "helperAttributes": {},
+                "time": 1452259908174,
+                "name": "/current",
+                "description": "get last event",
+                "collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+                "responses": [],
+                "folder": "2fa16229-e591-379c-1fec-6e5dccee8b10"
+            },
+            {
+                "id": "ef28b019-8dc8-8ff6-576a-d8852faa0954",
+                "headers": "Content-Type: application/json\nAccept: application/json\n",
+                "url": "{{addressManagementApi}}/street?area.id=area3&fields=id,type,name",
+                "preRequestScript": "",
+                "pathVariables": {},
+                "method": "GET",
+                "data": [],
+                "dataMode": "params",
+                "version": 2,
+                "tests": "var dataOut = JSON.parse(responseBody);\n\ntests[\"Content-Type is present \" + postman.getResponseHeader(\"Content-type\")] = postman.getResponseHeader(\"Content-type\");\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfor (var i = 0; i < dataOut.length; i++) {\n    var street = dataOut[i];\n    tests[\"Response contains ID \" + street.id.toString()] = street.id.toString() !== \"\";\n    tests[\"Response contains NAME \" + street.name.toString()] = street.name.toString() !== \"\";\n}",
+                "currentHelper": "normal",
+                "helperAttributes": {},
+                "time": 1470722510870,
+                "name": "find street",
+                "description": "find street",
+                "collectionId": "61a4c3a7-f320-2dd8-d384-70ab314f1f51",
+                "responses": []
+            }
+        ]
+    },
+    "folder": null,
+    "globals": {
+        "values": []
+    },
+    "results": [
+        {
+            "id": "036d425e-1085-7c97-13ca-7d25d3512267",
+            "name": "find area",
+            "url": "{{addressManagementApi}}/area",
+            "totalTime": 240,
+            "responseCode": {
+                "code": 200,
+                "name": "",
+                "detail": ""
+            },
+            "tests": {
+                "Content-Type is present application/json": "application/json",
+                "Status code is 200": true,
+                "Response contains ID area1": true,
+                "Response contains NAME Royal Borough of Kensington and Chelsea": true,
+                "Response contains ID area2": true,
+                "Response contains NAME North Kensington": true,
+                "Response contains ID area3": true,
+                "Response contains NAME South Kensington": true,
+                "Response contains ID area4": true,
+                "Response contains NAME Kensington": true
+            },
+            "totalPassFailCounts": {
+                "pass": 10,
+                "fail": 0
+            },
+            "testPassFailCounts": {
+                "Content-Type is present application/json": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Status code is 200": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID area1": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains NAME Royal Borough of Kensington and Chelsea": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID area2": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains NAME North Kensington": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID area3": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains NAME South Kensington": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID area4": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains NAME Kensington": {
+                    "pass": 1,
+                    "fail": 0
+                }
+            },
+            "times": [],
+            "allTests": [
+                {
+                    "Content-Type is present application/json": "application/json",
+                    "Status code is 200": true,
+                    "Response contains ID area1": true,
+                    "Response contains NAME Royal Borough of Kensington and Chelsea": true,
+                    "Response contains ID area2": true,
+                    "Response contains NAME North Kensington": true,
+                    "Response contains ID area3": true,
+                    "Response contains NAME South Kensington": true,
+                    "Response contains ID area4": true,
+                    "Response contains NAME Kensington": true
+                }
+            ],
+            "time": 240,
+            "meanResponseTime": 240
+        },
+        {
+            "id": "ef28b019-8dc8-8ff6-576a-d8852faa0954",
+            "name": "find street",
+            "url": "{{addressManagementApi}}/street?area.id=area3&fields=id,type,name",
+            "totalTime": 125,
+            "responseCode": {
+                "code": 200,
+                "name": "",
+                "detail": ""
+            },
+            "tests": {
+                "Content-Type is present application/json": "application/json",
+                "Status code is 200": true,
+                "Response contains ID street3": true,
+                "Response contains NAME Cromwell": true
+            },
+            "totalPassFailCounts": {
+                "pass": 4,
+                "fail": 0
+            },
+            "testPassFailCounts": {
+                "Content-Type is present application/json": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Status code is 200": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID street3": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains NAME Cromwell": {
+                    "pass": 1,
+                    "fail": 0
+                }
+            },
+            "times": [],
+            "allTests": [
+                {
+                    "Content-Type is present application/json": "application/json",
+                    "Status code is 200": true,
+                    "Response contains ID street3": true,
+                    "Response contains NAME Cromwell": true
+                }
+            ],
+            "time": 125,
+            "meanResponseTime": 125
+        },
+        {
+            "id": "a34d61a1-383b-0fdc-12e5-eff4f675b9d6",
+            "name": "get streetSegment with streetId",
+            "url": "{{addressManagementApi}}/street/street3/streetSegment",
+            "totalTime": 29,
+            "responseCode": {
+                "code": 200,
+                "name": "",
+                "detail": ""
+            },
+            "tests": {
+                "Content-Type is present application/json": "application/json",
+                "Status code is 200": true,
+                "Response contains ID segment31": true,
+                "Response contains ID segment32": true
+            },
+            "totalPassFailCounts": {
+                "pass": 4,
+                "fail": 0
+            },
+            "testPassFailCounts": {
+                "Content-Type is present application/json": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Status code is 200": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID segment31": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID segment32": {
+                    "pass": 1,
+                    "fail": 0
+                }
+            },
+            "times": [],
+            "allTests": [
+                {
+                    "Content-Type is present application/json": "application/json",
+                    "Status code is 200": true,
+                    "Response contains ID segment31": true,
+                    "Response contains ID segment32": true
+                }
+            ],
+            "time": 29,
+            "meanResponseTime": 29
+        },
+        {
+            "id": "7e3e73a3-e981-36cb-1f9f-22d13815380b",
+            "name": "find address",
+            "url": "{{addressManagementApi}}/address",
+            "totalTime": 36,
+            "responseCode": {
+                "code": 200,
+                "name": "",
+                "detail": ""
+            },
+            "tests": {
+                "Content-Type is present application/json": "application/json",
+                "Status code is 200": true,
+                "Response contains ID address1": true,
+                "Response contains HREF http://localhost:8080/DSAddressManagement/api/admin/address/address1": true,
+                "Response contains ID address2": true,
+                "Response contains HREF http://localhost:8080/DSAddressManagement/api/admin/address/address2": true
+            },
+            "totalPassFailCounts": {
+                "pass": 6,
+                "fail": 0
+            },
+            "testPassFailCounts": {
+                "Content-Type is present application/json": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Status code is 200": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID address1": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains HREF http://localhost:8080/DSAddressManagement/api/admin/address/address1": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID address2": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains HREF http://localhost:8080/DSAddressManagement/api/admin/address/address2": {
+                    "pass": 1,
+                    "fail": 0
+                }
+            },
+            "times": [],
+            "allTests": [
+                {
+                    "Content-Type is present application/json": "application/json",
+                    "Status code is 200": true,
+                    "Response contains ID address1": true,
+                    "Response contains HREF http://localhost:8080/DSAddressManagement/api/admin/address/address1": true,
+                    "Response contains ID address2": true,
+                    "Response contains HREF http://localhost:8080/DSAddressManagement/api/admin/address/address2": true
+                }
+            ],
+            "time": 36,
+            "meanResponseTime": 36
+        },
+        {
+            "id": "d17a5470-4411-4e3d-681c-19013e77ec58",
+            "name": "get address by id",
+            "url": "{{addressManagementApi}}/address/address1",
+            "totalTime": 102,
+            "responseCode": {
+                "code": 200,
+                "name": "",
+                "detail": ""
+            },
+            "tests": {
+                "Content-Type is present application/json": "application/json",
+                "Status code is 200": true
+            },
+            "totalPassFailCounts": {
+                "pass": 2,
+                "fail": 0
+            },
+            "testPassFailCounts": {
+                "Content-Type is present application/json": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Status code is 200": {
+                    "pass": 1,
+                    "fail": 0
+                }
+            },
+            "times": [],
+            "allTests": [
+                {
+                    "Content-Type is present application/json": "application/json",
+                    "Status code is 200": true
+                }
+            ],
+            "time": 102,
+            "meanResponseTime": 102
+        },
+        {
+            "id": "2e653672-c36b-0280-fd46-c3517113afb7",
+            "name": "validate address",
+            "url": "{{addressManagementApi}}/address/validate",
+            "totalTime": 34,
+            "responseCode": {
+                "code": 201,
+                "name": "",
+                "detail": ""
+            },
+            "tests": {
+                "Content-Type is present application/json": "application/json",
+                "Status code is 201": true,
+                "Response contains ID address1": true,
+                "Response contains HREF http://localhost:8080/DSAddressManagement/api/addressManagement/v1/address/address1": true
+            },
+            "totalPassFailCounts": {
+                "pass": 4,
+                "fail": 0
+            },
+            "testPassFailCounts": {
+                "Content-Type is present application/json": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Status code is 201": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains ID address1": {
+                    "pass": 1,
+                    "fail": 0
+                },
+                "Response contains HREF http://localhost:8080/DSAddressManagement/api/addressManagement/v1/address/address1": {
+                    "pass": 1,
+                    "fail": 0
+                }
+            },
+            "times": [],
+            "allTests": [
+                {
+                    "Content-Type is present application/json": "application/json",
+                    "Status code is 201": true,
+                    "Response contains ID address1": true,
+                    "Response contains HREF http://localhost:8080/DSAddressManagement/api/addressManagement/v1/address/address1": true
+                }
+            ],
+            "time": 34,
+            "meanResponseTime": 34
+        },
+        {
+            "id": "e5d96f37-5e13-9c9f-29a7-b354ebd03a1e",
+            "name": "/current",
+            "url": "{{addressManagementSubscriberApi}}/current",
+            "totalTime": 0,
+            "responseCode": {
+                "code": 0,
+                "name": "",
+                "detail": ""
+            },
+            "tests": {},
+            "totalPassFailCounts": {
+                "pass": 0,
+                "fail": 0
+            },
+            "testPassFailCounts": {},
+            "times": [],
+            "allTests": [
+                {}
+            ],
+            "time": 0,
+            "meanResponseTime": 0
+        },
+        {
+            "id": "34d6255d-2758-8253-9b9b-7de111f436a2",
+            "name": "/history",
+            "url": "{{addressManagementSubscriberApi}}/history",
+            "totalTime": 0,
+            "responseCode": {
+                "code": 0,
+                "name": "",
+                "detail": ""
+            },
+            "tests": {},
+            "totalPassFailCounts": {
+                "pass": 0,
+                "fail": 0
+            },
+            "testPassFailCounts": {},
+            "times": [],
+            "allTests": [
+                {}
+            ],
+            "time": 0,
+            "meanResponseTime": 0
+        }
+    ],
+    "environment": {
+        "id": "e9ff5be6-a134-95a0-3719-abe85cd8241b",
+        "name": "TMForum Local",
+        "values": [
+            {
+                "key": "Host",
+                "value": "http://localhost:8080",
+                "type": "text",
+                "name": "Host",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "billingManagementApi",
+                "value": "{{Host}}/DSBillingManagement/api/billingManagement/v2",
+                "type": "text",
+                "name": "billingManagementApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "billingManagementAdminApi",
+                "value": "{{Host}}/DSBillingManagement/api/admin",
+                "type": "text",
+                "name": "billingManagementAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "billingManagementSubscriberApi",
+                "value": "{{Host}}/DSBillingManagement/subscriber/api",
+                "type": "text",
+                "name": "billingManagementSubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "partyManagementApi",
+                "value": "{{Host}}/DSPartyManagement/api/partyManagement/v2",
+                "type": "text",
+                "name": "partyManagementApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "partyManagementAdminApi",
+                "value": "{{Host}}/DSPartyManagement/api/admin",
+                "type": "text",
+                "name": "partyManagementAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "partyManagementSubscriberApi",
+                "value": "{{Host}}/DSPartyManagement/subscriber/api",
+                "type": "text",
+                "name": "partyManagementSubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "customerManagementApi",
+                "value": "{{Host}}/DSCustomerManagement/api/customerManagement/v2",
+                "type": "text",
+                "name": "customerManagementApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "customerManagementAdminApi",
+                "value": "{{Host}}/DSCustomerManagement/api/admin",
+                "type": "text",
+                "name": "customerManagementAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "customerManagementSubscriberApi",
+                "value": "{{Host}}/DSCustomerManagement/subscriber/api",
+                "type": "text",
+                "name": "customerManagementSubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "productOrderingApi",
+                "value": "{{Host}}/DSProductOrdering/api/productOrdering/v2",
+                "type": "text",
+                "name": "productOrderingApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "productOrderingAdminApi",
+                "value": "{{Host}}/DSProductOrdering/api/admin",
+                "type": "text",
+                "name": "productOrderingAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "productOrderingSubscriberApi",
+                "value": "{{Host}}/DSProductOrdering/subscriber/api",
+                "type": "text",
+                "name": "productOrderingSubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "troubleTicketingApi",
+                "value": "{{Host}}/DSTroubleTicket/api/troubleTicketManagement/v2",
+                "type": "text",
+                "name": "troubleTicketingApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "troubleTicketingAdminApi",
+                "value": "{{Host}}/DSTroubleTicket/api/admin/troubleTicket",
+                "type": "text",
+                "name": "troubleTicketingAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "troubleTicketingSubscriberApi",
+                "value": "{{Host}}/DSTroubleTicket/subscriber/api",
+                "type": "text",
+                "name": "troubleTicketingSubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "productInventoryApi",
+                "value": "{{Host}}/DSProductInventory/api/productInventory/v2",
+                "type": "text",
+                "name": "productInventoryApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "productInventoryAdminApi",
+                "value": "{{Host}}/DSProductInventory/api/admin",
+                "type": "text",
+                "name": "productInventoryAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "productInventorySubscriberApi",
+                "value": "{{Host}}/DSProductInventory/subscriber/api",
+                "type": "text",
+                "name": "productInventorySubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "catalogManagementApi",
+                "value": "{{Host}}/DSProductCatalog/api/catalogManagement/v2",
+                "type": "text",
+                "name": "catalogManagementApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "catalogManagementAdminApi",
+                "value": "{{Host}}/DSProductCatalog/api/admin",
+                "type": "text",
+                "name": "catalogManagementAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "catalogManagementSubscriberApi",
+                "value": "{{Host}}/DSProductCatalog/subscriber/eventApi",
+                "type": "text",
+                "name": "catalogManagementSubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "slaManagementApi",
+                "value": "{{Host}}/DSLAManagement/api/slaManagement/v2",
+                "type": "text",
+                "name": "slaManagementApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "slaManagementSubscriberApi",
+                "value": "{{Host}}/DSLAManagement/subscriber/api",
+                "type": "text",
+                "name": "slaManagementSubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "slaManagementAdminApi",
+                "value": "{{Host}}/DSLAManagement/api/admin",
+                "type": "text",
+                "name": "slaManagementAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "usageManagementApi",
+                "value": "{{Host}}/DSUsageManagement/api/usageManagement/v2",
+                "type": "text",
+                "name": "usageManagementApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "usageManagementSubscriberApi",
+                "value": "{{Host}}/DSUsageManagement/subscriber/api",
+                "type": "text",
+                "name": "usageManagementSubscriberApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "usageManagementAdminApi",
+                "value": "{{Host}}/DSUsageManagement/api/admin/usage",
+                "type": "text",
+                "name": "usageManagementAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "testName",
+                "value": "tmf-product-offering-qualification-001",
+                "type": "text",
+                "name": "testName",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "url1",
+                "value": "http://env-0693795.jelastic.servint.net/DSCustomerManagement/api/customerManagement/v2",
+                "type": "text",
+                "name": "url1",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "appointmentManagementApi",
+                "value": "{{Host}}/DSAppointmentManagement/api/appointment/v1",
+                "type": "text",
+                "name": "appointmentManagementApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "addressManagementApi",
+                "value": "{{Host}}/DSAddressManagement/api/addressManagement/v1",
+                "type": "text",
+                "name": "addressManagementApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "addressManagementAdminApi",
+                "value": "{{Host}}/DSAddressManagement/api/admin",
+                "type": "text",
+                "name": "addressManagementAdminApi",
+                "enabled": true,
+                "hovered": false
+            },
+            {
+                "key": "quoteManagementApi",
+                "value": "{{Host}}/DSQuoteManagement/api/quoteManagement/v1",
+                "type": "text",
+                "name": "quoteManagementApi",
+                "enabled": true,
+                "hovered": false
+            }
+        ],
+        "team": null,
+        "timestamp": 1469155606077,
+        "synced": false,
+        "syncedFilename": "",
+        "isDeleted": false
+    },
+    "delay": 0
+}
